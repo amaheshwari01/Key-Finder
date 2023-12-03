@@ -57,7 +57,7 @@ function handleCallback(url) {
      fetch('https://oauth2.googleapis.com/token', options)
          .then(response => response.json())
          .then(response => {
-          clipboard.writeText(JSON.stringify(response))
+          clipboard.writeText(JSON.stringify(response.refresh_token))
   
      
              // Create a new window to display the refresh token
@@ -72,7 +72,7 @@ function handleCallback(url) {
  
 
              tokenWindow.loadURL(`data:text/html,
-   <h1>Login tokens have been copied to clipboard</h1><p>here they are: <br> ${JSON.stringify(response)}</p>
+   <h1>Login token has been copied to clipboard</h1><p>here it is : <br> ${JSON.stringify(response.refresh_token)}</p>
    `);
              tokenWindow.show();
          }).catch(error => {
