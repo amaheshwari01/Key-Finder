@@ -30,10 +30,10 @@ function handleCallback(url) {
  let code = (raw_code && raw_code.length > 1) ? raw_code[1] : null;
  let error = /\?error=(.+)$/.exec(url);
 
-//  if (code || error) {
-//    // Close the browser if code found or error
-//    authWindow.destroy();
-//  }
+ if (code || error) {
+   // Close the browser if code found or error
+   authWindow.destroy();
+ }
 
  if (code) {
    // This is where you should send the code to your server to exchange for a access token
@@ -53,7 +53,6 @@ function handleCallback(url) {
     redirect_uri: 'com.powerschool.portal://'
   })
 };
-    let output=""
      fetch('https://oauth2.googleapis.com/token', options)
          .then(response => response.json())
          .then(response => {
